@@ -29,7 +29,8 @@ class FluttermojiController extends GetxController {
   /// Eg: selectedIndexes["eyes"] gives the index of
   /// the kind of eyes picked by the user
   Map<String?, dynamic> selectedOptions = <String?, dynamic>{};
-
+  String selections;
+	
   @override
   void onInit() {
     // called immediately after the widget is allocated memory
@@ -37,7 +38,8 @@ class FluttermojiController extends GetxController {
     super.onInit();
   }
 
-  void init() async {
+  void init(preSelections) async {
+    selections = preSelections;
     Map<String?, int> _tempIndexes = await getFluttermojiOptions();
     selectedOptions = _tempIndexes;
     update();
@@ -150,21 +152,16 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
   }
 
   Future<Map<String?, int>> getFluttermojiOptions() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    String? _fluttermojiOptions = pref.getString('fluttermojiSelectedOptions');
-    if (_fluttermojiOptions == null || _fluttermojiOptions == '') {
-      Map<String?, int> _fluttermojiOptionsMap =
-          Map.from(defaultFluttermojiOptions);
-      await pref.setString(
-          'fluttermojiSelectedOptions', jsonEncode(_fluttermojiOptionsMap));
+    if (selections == null || selections == '') {
+      Map<String?, int> _fluttermojiOptionsMap = Map.from(defaultFluttermojiOptions);
       selectedOptions = _fluttermojiOptionsMap;
-
       update();
       return _fluttermojiOptionsMap;
     }
-    selectedOptions = Map.from(jsonDecode(_fluttermojiOptions));
+
+    selectedOptions = Map.from(jsonDecode(selections));
     update();
-    return Map.from(jsonDecode(_fluttermojiOptions));
+    return Map.from(jsonDecode(selections));
   }
 
   String? getComponentTitle(String attributeKey, int attriibuteValueIndex) {
