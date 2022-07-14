@@ -132,8 +132,10 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
       setState(() {
         fluttermojiController.selectedOptions[attribute.key] = index;
       });
-      if (widget.autosave) await fluttermojiController.setFluttermoji();
       fluttermojiController.updatePreview();
+      if (widget.autosave) {
+        final options = await fluttermojiController.setFluttermoji();
+        widget.onUpdateSelection(options);
     }
   }
 
