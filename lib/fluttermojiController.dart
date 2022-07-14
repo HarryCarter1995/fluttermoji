@@ -21,7 +21,7 @@ import 'fluttermoji_assets/top/hairStyles/hairStyle.dart';
 /// Exposes certain static functions for use by the developer
 class FluttermojiController extends GetxController {
   var fluttermoji = "".obs;
-  var selections = "".obs;
+ String selections;
 
   /// Stores the option selected by the user for each attribute
   /// where the key represents the Attribute
