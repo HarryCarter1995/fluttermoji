@@ -123,13 +123,13 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
     super.dispose();
   }
 
-  void onTapOption(int index, int? i, AttributeItem attribute) {
+  void onTapOption(int index, int? i, AttributeItem attribute) async {
     if (index != i) {
       setState(() {
         fluttermojiController.selectedOptions[attribute.key] = index;
       });
+      if (widget.autosave) await fluttermojiController.setFluttermoji();
       fluttermojiController.updatePreview();
-      if (widget.autosave) fluttermojiController.setFluttermoji();
     }
   }
 
