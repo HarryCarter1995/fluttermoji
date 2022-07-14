@@ -21,6 +21,7 @@ import 'fluttermoji_assets/top/hairStyles/hairStyle.dart';
 /// Exposes certain static functions for use by the developer
 class FluttermojiController extends GetxController {
   var fluttermoji = "".obs;
+  var selections = "".obs;
 
   /// Stores the option selected by the user for each attribute
   /// where the key represents the Attribute
@@ -29,7 +30,7 @@ class FluttermojiController extends GetxController {
   /// Eg: selectedIndexes["eyes"] gives the index of
   /// the kind of eyes picked by the user
   Map<String?, dynamic> selectedOptions = <String?, dynamic>{};
-  String selections;
+ 
 	
   @override
   void onInit() {
@@ -38,8 +39,7 @@ class FluttermojiController extends GetxController {
     super.onInit();
   }
 
-  void init(preSelections) async {
-    selections = preSelections;
+  void init() async {
     Map<String?, int> _tempIndexes = await getFluttermojiOptions();
     selectedOptions = _tempIndexes;
     update();
