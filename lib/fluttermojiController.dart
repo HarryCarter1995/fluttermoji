@@ -93,7 +93,6 @@ class FluttermojiController extends GetxController {
     await pref.setString(
         'fluttermojiSelectedOptions', jsonEncode(selectedOptions));
     update();
-	  print('Reading here');
   }
 
   /// Generates a [String] fluttermoji from [selectedOptions] pref
