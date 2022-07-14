@@ -92,6 +92,7 @@ class FluttermojiController extends GetxController {
     fluttermoji.value = fluttermojiNew;
     await pref.setString(
         'fluttermojiSelectedOptions', jsonEncode(selectedOptions));
+	print('Selected options: ${jsonEncode(selectedOptions)}');
     update();
   }
 
