@@ -113,7 +113,7 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
     var _fluttermojiController;
     Get.put(FluttermojiController());
     _fluttermojiController = Get.find<FluttermojiController>();
-    _fluttermojiController.selections = widget.selections;
+    _fluttermojiController.selections.value = widget.selections;
     setState(() {
       tabController = TabController(length: attributesCount, vsync: this);
       fluttermojiController = _fluttermojiController;
