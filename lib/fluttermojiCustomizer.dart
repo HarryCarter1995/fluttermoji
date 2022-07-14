@@ -34,7 +34,7 @@ class FluttermojiCustomizer extends StatefulWidget {
     FluttermojiThemeData? theme,
     List<String>? attributeTitles,
     List<String>? attributeIcons,
-    this.Function onUpdateSelection,
+    this.onUpdateSelection,
     this.autosave = true,
   })  : assert(
           attributeTitles == null || attributeTitles.length == attributesCount,
