@@ -21,7 +21,7 @@ import 'fluttermoji_assets/top/hairStyles/hairStyle.dart';
 /// Exposes certain static functions for use by the developer
 class FluttermojiController extends GetxController {
   var fluttermoji = "".obs;
-  var selections = "".obs;
+  String selections = "";
 
   /// Stores the option selected by the user for each attribute
   /// where the key represents the Attribute
@@ -39,6 +39,10 @@ class FluttermojiController extends GetxController {
     super.onInit();
   }
 
+  void updateSelections(String s) {
+    selections = s;
+  }
+	
   void init() async {
     Map<String?, int> _tempIndexes = await getFluttermojiOptions();
     selectedOptions = _tempIndexes;
@@ -152,17 +156,17 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
   }
 
   Future<Map<String?, int>> getFluttermojiOptions() async {
-	  print('Val of function: ${selections.value}');
-    if (selections.value == null || selections.value == '') {
+	  print('Val of function: ${selections}');
+    if (selections == null || selections == '') {
       Map<String?, int> _fluttermojiOptionsMap = Map.from(defaultFluttermojiOptions);
       selectedOptions = _fluttermojiOptionsMap;
       update();
       return _fluttermojiOptionsMap;
     }
 
-    selectedOptions = Map.from(jsonDecode(selections.value));
+    selectedOptions = Map.from(jsonDecode(selections));
     update();
-    return Map.from(jsonDecode(selections.value));
+    return Map.from(jsonDecode(selections));
   }
 
   String? getComponentTitle(String attributeKey, int attriibuteValueIndex) {
