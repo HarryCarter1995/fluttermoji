@@ -83,17 +83,12 @@ class FluttermojiController extends GetxController {
   ///  adds the new name to controller
   ///
   ///  Thereby updating all the states which are listening to controller
-  Future<void> setFluttermoji({String fluttermojiNew = ''}) async {
+  Future<String> setFluttermoji({String fluttermojiNew = ''}) async {
     if (fluttermojiNew.isEmpty) {
       fluttermojiNew = getFluttermojiFromOptions();
     }
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    await pref.setString('fluttermoji', fluttermojiNew);
-    fluttermoji.value = fluttermojiNew;
-    await pref.setString(
-        'fluttermojiSelectedOptions', jsonEncode(selectedOptions));
-	print('Selected options: ${jsonEncode(selectedOptions)}');
     update();
+  return await jsonEncode(selectedOptions);  
   }
 
   /// Generates a [String] fluttermoji from [selectedOptions] pref
