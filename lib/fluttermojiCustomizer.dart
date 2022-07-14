@@ -35,6 +35,7 @@ class FluttermojiCustomizer extends StatefulWidget {
     List<String>? attributeTitles,
     List<String>? attributeIcons,
     required this.onUpdateSelection,
+    required this.selections,
     this.autosave = true,
   })  : assert(
           attributeTitles == null || attributeTitles.length == attributesCount,
@@ -89,6 +90,9 @@ class FluttermojiCustomizer extends StatefulWidget {
   // Callback for when selections is updated
   final Function onUpdateSelection;
   
+  //Pre selections
+  final String selections;
+  
   static const int attributesCount = 11;
 
   @override
@@ -109,7 +113,7 @@ class _FluttermojiCustomizerState extends State<FluttermojiCustomizer>
     var _fluttermojiController;
     Get.put(FluttermojiController());
     _fluttermojiController = Get.find<FluttermojiController>();
-
+    _fluttermojiController.selections = widget.selections;
     setState(() {
       tabController = TabController(length: attributesCount, vsync: this);
       fluttermojiController = _fluttermojiController;
