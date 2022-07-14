@@ -152,7 +152,7 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
   }
 
   Future<Map<String?, int>> getFluttermojiOptions() async {
-	  print('Val of function: ${selections.value});
+	  print('Val of function: ${selections.value}');
     if (selections.value == null || selections.value == '') {
       Map<String?, int> _fluttermojiOptionsMap = Map.from(defaultFluttermojiOptions);
       selectedOptions = _fluttermojiOptionsMap;
