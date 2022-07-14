@@ -152,16 +152,16 @@ xmlns:xlink="http://www.w3.org/1999/xlink">
   }
 
   Future<Map<String?, int>> getFluttermojiOptions() async {
-    if (selections.value == null || selections.value == '') {
+    if (selections == null || selections == '') {
       Map<String?, int> _fluttermojiOptionsMap = Map.from(defaultFluttermojiOptions);
       selectedOptions = _fluttermojiOptionsMap;
       update();
       return _fluttermojiOptionsMap;
     }
 
-    selectedOptions = Map.from(jsonDecode(selections.value));
+    selectedOptions = Map.from(jsonDecode(selections));
     update();
-    return Map.from(jsonDecode(selections.value));
+    return Map.from(jsonDecode(selections));
   }
 
   String? getComponentTitle(String attributeKey, int attriibuteValueIndex) {
