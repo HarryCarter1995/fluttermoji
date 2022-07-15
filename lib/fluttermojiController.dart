@@ -30,18 +30,11 @@ class FluttermojiController extends GetxController {
   /// Eg: selectedIndexes["eyes"] gives the index of
   /// the kind of eyes picked by the user
   Map<String?, dynamic> selectedOptions = <String?, dynamic>{};
- 
-	
-  @override
-  void onInit() {
-    // called immediately after the widget is allocated memory
-    init();
-    super.onInit();
-  }
+
 
   void updateSelections(String s) {
     selections.value = s;
-	  update();
+    init();
   }
 	
   void init() async {
